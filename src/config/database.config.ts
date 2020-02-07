@@ -7,5 +7,7 @@ export const DATABASE = {
     port: config.get('DB_PORT'),
     username: config.get('DB_USERNAME'),
     password: config.get('DB_PASSWORD'),
-    name: config.get('DB_NAME')
+    name: config.get('DB_NAME'),
+    logging: parseInt(config.get('DB_LOGGING'), 10) ? true : false,
+    synchronize: parseInt(config.get('DB_SYNC'), 10) ? true : false
 };
