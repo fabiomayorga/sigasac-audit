@@ -5,7 +5,7 @@ import {
     PrimaryGeneratedColumn
 } from 'typeorm';
 
-@Entity({ name: 'database_audit' })
+@Entity({ name: 'db_audit' })
 export class DatabaseAudit {
     @PrimaryGeneratedColumn('increment', {
         name: 'id',
