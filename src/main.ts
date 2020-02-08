@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
-import { APP } from "./config";
+import { APP } from './config';
 
 import { AppModule } from './app.module';
 
@@ -12,6 +12,7 @@ async function bootstrap() {
         .setTitle(APP.name)
         .setDescription('Módulo para auditoría de bases de datos')
         .setVersion(APP.version)
+        .addBearerAuth()
         .build();
 
     const document = SwaggerModule.createDocument(app, options);
