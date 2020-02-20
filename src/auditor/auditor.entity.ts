@@ -2,8 +2,12 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn
 } from 'typeorm';
+
+import { DBEntity } from 'src/entity/entity.entity';
 
 @Entity({ name: 'db_audit' })
 export class DatabaseAudit {
@@ -34,4 +38,13 @@ export class DatabaseAudit {
         type: 'timestamp without time zone'
     })
     createdAt: Date;
+
+    // relationships
+    @ManyToOne(
+        type => DBEntity,
+        dbEntity => dbEntity.audits,
+        { nullable: true }
+    )
+    @JoinColumn({ name: 'entity_id', referencedColumnName: 'id' })
+    public dbEntity!: DBEntity;
 }

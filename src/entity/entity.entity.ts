@@ -1,10 +1,13 @@
 import {
-    Entity,
     Column,
     CreateDateColumn,
+    Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from 'typeorm';
+
+import { DatabaseAudit } from 'src/auditor/auditor.entity';
 
 @Entity({ name: 'db_entities' })
 export class DBEntity {
@@ -37,4 +40,11 @@ export class DBEntity {
         select: false
     })
     updatedAt: Date;
+
+    // relationships
+    @OneToMany(
+        type => DatabaseAudit,
+        databaseAudit => databaseAudit.dbEntity
+    )
+    public audits!: DatabaseAudit[];
 }

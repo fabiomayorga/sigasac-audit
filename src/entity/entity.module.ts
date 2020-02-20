@@ -7,6 +7,7 @@ import { entityProviders } from './entity.providers';
 @Module({
     imports: [DatabaseModule],
     controllers: [EntityController],
-    providers: [...entityProviders, EntityService]
+    providers: [...entityProviders, EntityService],
+    exports: [EntityService]
 })
 export class EntityModule {}
